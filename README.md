@@ -1,6 +1,6 @@
 # ivf_mandate_cdc2018
 
-This repository contains files relevant for the mini-analysis demonstration reported in a letter to the editor of the *American Journal of Obstetrics & Gynecology* regarding the analysis conducted by [Peipert et al.](https://pubmed.ncbi.nlm.nih.gov/35283088/) in "Impact of comprehensive state insurance mandates on in vitro fertilization utilization, embryo transfer practices, and outcomes in the United States".
+This repository contains files relevant for the mini-analysis demonstration reported in a letter to the editor of the *American Journal of Obstetrics & Gynecology* regarding the analysis conducted by [Peipert et al.](https://pubmed.ncbi.nlm.nih.gov/35283088/) in "Impact of comprehensive state insurance mandates on in vitro fertilization utilization, embryo transfer practices, and outcomes in the United States". The data and code needed to replicate the numbers reported in the letter to the editor are included here. Data were downloaded from [this CDC website](https://www.cdc.gov/art/reports/archive.html) on May 25, 2022. 
 
 **Live birth rate per retrieval, stratified by age group (years)**
 <table>

@@ -51,4 +51,4 @@ This repository contains files relevant for the mini-analysis demonstration repo
 </table>
 
 
-![](https://raw.githubusercontent.com/katcorr/ivf-mandate-cdc2018/main/fig1.png)
+![](https://github.com/katcorr/ivf-mandate-cdc2018/blob/main/fig1.png)

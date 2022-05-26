@@ -12,7 +12,7 @@ library(gee)
 mandated_states <- c("Connecticut", "Illinois", "Maryland", "Massachusetts"
                      , "New Jersey", "Rhode Island")
 
-clinics18_0 <- read_excel("RawData/FINAL-2018-clinic-table-dataset.xlsx"
+clinics18_0 <- read_excel("data/FINAL-2018-clinic-table-dataset.xlsx"
                         , sheet = "Clinic Table Data Records") %>%
   select(clinic_name = CurrentClinicName1, clinic_state = CurrentClinicState
           , starts_with(c("ND_NumIntentRet", "ND_NumRetrieve", "ND_RetrieveLB")))
@@ -148,16 +148,18 @@ chisq5
 # variability in live birth rates across clinics, by mandate
 ggplot(data=clinics18_long, aes(x=RetrieveLB, color=as.factor(mandate))) +
   geom_boxplot() +
-  facet_grid(rows=vars(agegrp)) +
+  facet_wrap(~agegrp) +
   scale_color_manual(labels = c("Clinics in states without comprehensive mandates"
                                 , "Clinics in states with comprehensive mandates")
                      , values = c("#756bb1", "#feb24c")) +
-  labs(color="", y="", x="Live birth rate per retrieval") +
-  theme(axis.text.y=element_blank(),
-        axis.ticks.y=element_blank())
+  labs(color="", y="", x="Live birth rate per retrieval"
+       , title="Live birth rate per retrieval"
+       , subtitle="CDC, 2018") +
+  theme(axis.text.y=element_blank()
+        , axis.ticks.y=element_blank()
+        , legend.position = "top")
   
-ggsave("C:/Users/kcorreia/Dropbox (Amherst College)/Research/nass-explore/fig1.png"
-       , height=8, width=6, units="in")
+ggsave("fig1.png", height=8, width=8, units="in")
 
 clinics18_forgee <- clinics18_long %>%
   mutate(numNoLB_ret = NumRetrieve - numLB_ret) %>%

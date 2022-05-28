@@ -6,7 +6,7 @@ This repository contains files relevant for the mini-analysis demonstration repo
 <table>
  <thead>
   <tr>
-   <th style="text-align:left;">  </th>
+   <th style="text-align:left;"> </th>
    <th style="text-align:left;"> &lt;35 </th>
    <th style="text-align:left;"> 35-37 </th>
    <th style="text-align:left;"> 38-40 </th>

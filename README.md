@@ -6,7 +6,7 @@ This repository contains files relevant for the mini-analysis demonstration repo
 <table>
  <thead>
   <tr>
-   <th style="text-align:left;"> </th>
+   <th style="text-align:left;"> what </th>
    <th style="text-align:left;"> &lt;35 </th>
    <th style="text-align:left;"> 35-37 </th>
    <th style="text-align:left;"> 38-40 </th>
@@ -19,33 +19,33 @@ This repository contains files relevant for the mini-analysis demonstration repo
    <td style="text-align:left;"> Comprehensive mandate </td>
    <td style="text-align:left;"> 52.7% </td>
    <td style="text-align:left;"> 40.0% </td>
-   <td style="text-align:left;"> 24.3% </td>
-   <td style="text-align:left;"> 12.5% </td>
-   <td style="text-align:left;"> 4.6% </td>
+   <td style="text-align:left;"> 24.2% </td>
+   <td style="text-align:left;"> 12.3% </td>
+   <td style="text-align:left;"> 4.2% </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Noncomprehensive mandate </td>
-   <td style="text-align:left;"> 52.0% </td>
-   <td style="text-align:left;"> 37.6% </td>
-   <td style="text-align:left;"> 23.3% </td>
-   <td style="text-align:left;"> 10.5% </td>
-   <td style="text-align:left;"> 2.6% </td>
+   <td style="text-align:left;"> 51.9% </td>
+   <td style="text-align:left;"> 37.8% </td>
+   <td style="text-align:left;"> 23.4% </td>
+   <td style="text-align:left;"> 10.2% </td>
+   <td style="text-align:left;"> 2.3% </td>
   </tr>
   <tr>
    <td style="text-align:left;"> P value from Chi-square test </td>
+   <td style="text-align:left;"> 0.14 </td>
+   <td style="text-align:left;"> 0.0008 </td>
    <td style="text-align:left;"> 0.15 </td>
-   <td style="text-align:left;"> 0.0002 </td>
-   <td style="text-align:left;"> 0.09 </td>
-   <td style="text-align:left;"> 0.002 </td>
+   <td style="text-align:left;"> 0.0006 </td>
    <td style="text-align:left;"> &lt; 0.0001 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> P value from GEE </td>
    <td style="text-align:left;"> 0.27 </td>
-   <td style="text-align:left;"> 0.56 </td>
-   <td style="text-align:left;"> 0.32 </td>
-   <td style="text-align:left;"> 0.23 </td>
-   <td style="text-align:left;"> 0.01 </td>
+   <td style="text-align:left;"> 0.35 </td>
+   <td style="text-align:left;"> 0.21 </td>
+   <td style="text-align:left;"> 0.09 </td>
+   <td style="text-align:left;"> 0.002 </td>
   </tr>
 </tbody>
 </table>

@@ -235,7 +235,7 @@ results <- data.frame(agegrp = c("<35", "35-37", "38-40", "41-42", "43+")
                            , value < 0.01 ~ as.character(round(value,3))
                            , TRUE ~ as.character(round(value,2)))) %>%
   bind_rows(clinics18_forchisq %>% 
-              mutate(value=paste0(round(percLB_intent*100,1),"%")
+              mutate(value=paste0(round(percLB*100,1),"%")
                      , what=ifelse(mandate==1, yes="Comprehensive mandate"
                                  , no="Noncomprehensive mandate")) %>%
               select(agegrp, what, value)) %>%

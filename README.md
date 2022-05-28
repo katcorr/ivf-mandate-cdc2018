@@ -25,7 +25,7 @@ This repository contains files relevant for the mini-analysis demonstration repo
   </tr>
   <tr>
    <td style="text-align:left;"> Noncomprehensive mandate </td>
-   <td style="text-align:left;"> 52% </td>
+   <td style="text-align:left;"> 52.0% </td>
    <td style="text-align:left;"> 37.6% </td>
    <td style="text-align:left;"> 23.3% </td>
    <td style="text-align:left;"> 10.5% </td>

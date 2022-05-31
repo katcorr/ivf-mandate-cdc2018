@@ -1,8 +1,8 @@
 # ivf_mandate_cdc2018
 
-This repository contains files relevant for the mini-analysis demonstration reported in a letter to the editor of the *American Journal of Obstetrics & Gynecology* regarding the analysis conducted by [Peipert et al.](https://pubmed.ncbi.nlm.nih.gov/35283088/) in "Impact of comprehensive state insurance mandates on in vitro fertilization utilization, embryo transfer practices, and outcomes in the United States". The data and code needed to replicate the numbers reported in the letter to the editor are included here. Data were downloaded from [this CDC website](https://www.cdc.gov/art/reports/archive.html) on May 25, 2022. 
+This repository contains files relevant for the demonstration reported in a letter to the editor of the *American Journal of Obstetrics & Gynecology* regarding the analysis conducted by [Peipert et al.](https://pubmed.ncbi.nlm.nih.gov/35283088/) in "Impact of comprehensive state insurance mandates on in vitro fertilization utilization, embryo transfer practices, and outcomes in the United States". The data and code needed to replicate the numbers reported in the letter to the editor are included here. Data were downloaded from [this CDC website](https://www.cdc.gov/art/reports/archive.html) on May 25, 2022. 
 
-**Live birth rate per retrieval, stratified by age group (years)**
+**Live birth rate per intended retrieval, stratified by age group (years)**
 <table>
  <thead>
   <tr>
@@ -49,5 +49,7 @@ This repository contains files relevant for the mini-analysis demonstration repo
   </tr>
 </tbody>
 </table>
+
+We could not replicate exactly the percentages and chi-square p-values reported in Peipert et al. This could be due to differences in handling of missing data, as the CDC reports a "\*" for values > 1 and < 5 (e.g., > 1 but < 5 intended retrievals at a given clinic). For the purposes of this demonstration, those clinics were excluded from the analysis.  
 
 ![](https://github.com/katcorr/ivf-mandate-cdc2018/blob/main/fig1.png)

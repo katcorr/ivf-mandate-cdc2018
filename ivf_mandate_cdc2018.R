@@ -80,6 +80,20 @@ check10 <- clinics18 %>% group_by(agegrp) %>% summarize(n=n())
 # --------------- CHI-SQ ANALYSIS IGNORING CLUSTERING ------------------------ #
 # ---------------------------------------------------------------------------- #
 
+# --------------------------- overall ---------------------------------------- #
+
+clinics18_forchisq_overall <- clinics18 %>%
+  group_by(mandate) %>%
+  summarize(totLB = sum(numLB, na.rm=TRUE)
+            , totNoLB = sum(numNoLB, na.rm=TRUE)) %>%
+  select(totLB, totNoLB)
+
+clinics18_forchisq_overall
+chisq_all <- chisq.test(clinics18_forchisq_overall)
+chisq_all
+
+# --------------------------- by age group ----------------------------------- #
+
 clinics18_forchisq <- clinics18 %>% 
   group_by(agegrp, mandate) %>% 
   summarize(totLB = sum(numLB, na.rm=TRUE)
@@ -177,13 +191,22 @@ clinics18_forgee <- clinics18 %>%
 mosaic::tally(LB ~ mandate + agegrp, data=clinics18_forgee)
 mosaic::tally(LB ~ mandate + agegrp, data=clinics18_forgee, format="percent")
 
+# --------------------------- overall ---------------------------------------- #
+
+# run on cluster (needed more memory)
+# mod_overall <- gee(LB ~ mandate, data=clinics18_forgee
+#                     , family = "binomial", id=clinic_name, corstr = "exchangeable")
+# 
+# #summary(mod_overall)
+# summary(mod_overall)$coeff
+# names(mod_overall)
+# mod_overall$working.correlation[1,2]
+# (1-pnorm(q=abs(summary(mod_overall)$coeff["mandate", "Robust z"])))*2
+
+# --------------------------- by age group ----------------------------------- #
+
 mod1 <- gee(LB ~ mandate, data=filter(clinics18_forgee, agegrp=="<35")
               , family = "binomial", id=clinic_name, corstr = "exchangeable")
-summary(mod1)
-summary(mod1)$coeff
-names(mod1)
-mod1$working.correlation[1,2]
-(1-pnorm(q=abs(summary(mod1)$coeff["mandate", "Robust z"])))*2
 
 mod2 <- gee(LB ~ mandate, data=filter(clinics18_forgee, agegrp=="35-37")
             , family = "binomial", id=clinic_name, corstr = "exchangeable")
@@ -210,10 +233,11 @@ summary(mod5)$coeff
 # ---------------       GATHER INFO INTO TABLE           --------------------- #
 # ---------------------------------------------------------------------------- #
 
-p_vals_chisq <- c(chisq1$p.value, chisq2$p.value, chisq3$p.value, chisq4$p.value
-                  , chisq5$p.value)
+p_vals_chisq <- c(chisq_all$p.value, chisq1$p.value, chisq2$p.value
+                  , chisq3$p.value, chisq4$p.value, chisq5$p.value)
 
-p_vals_gee <- c(1-pnorm(q=abs(summary(mod1)$coeff["mandate", "Robust z"]))
+p_vals_gee <- c(0.009/2 # run on cluster
+                , 1-pnorm(q=abs(summary(mod1)$coeff["mandate", "Robust z"]))
                 , 1-pnorm(q=abs(summary(mod2)$coeff["mandate", "Robust z"]))
                 , 1-pnorm(q=abs(summary(mod3)$coeff["mandate", "Robust z"]))
                 , 1-pnorm(q=abs(summary(mod4)$coeff["mandate", "Robust z"]))
@@ -226,7 +250,7 @@ wc_gee <- c(mod1$working.correlation[1,2]
             , mod5$working.correlation[1,2])
 
 
-results <- data.frame(agegrp = c("<35", "35-37", "38-40", "41-42", "43+")
+results <- data.frame(agegrp = c("Overall", "<35", "35-37", "38-40", "41-42", "43+")
                      , pval_cs = p_vals_chisq
                      , pval_gee = p_vals_gee) %>%
   pivot_longer(cols=c("pval_cs", "pval_gee"), names_to="what", values_to="value") %>%
@@ -234,6 +258,12 @@ results <- data.frame(agegrp = c("<35", "35-37", "38-40", "41-42", "43+")
                            , value < 0.001 ~ as.character(round(value,4))
                            , value < 0.01 ~ as.character(round(value,3))
                            , TRUE ~ as.character(round(value,2)))) %>%
+  bind_rows(clinics18_forchisq_overall %>%
+              mutate(value=paste0(round((totLB/(totLB+totNoLB))*100,1),"%")
+                     , what=ifelse(row_number()==2, yes="Comprehensive mandate"
+                                 , no="Noncomprehensive mandate")
+                     , agegrp="Overall") %>%
+              select(what, agegrp, value)) %>%
   bind_rows(clinics18_forchisq %>% 
               mutate(value=paste0(round(percLB*100,1),"%")
                      , what=ifelse(mandate==1, yes="Comprehensive mandate"

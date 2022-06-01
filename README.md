@@ -39,16 +39,16 @@ We could not replicate exactly the percentages and chi-square p-values reported 
   </tr>
   <tr>
    <td style="text-align:left;"> P value from Chi-square test </td>
-   <td style="text-align:left;"> &lt; 0.0001 </td>
+   <td style="text-align:left;"> &lt; <0.001 </td>
    <td style="text-align:left;"> 0.14 </td>
-   <td style="text-align:left;"> 0.0008 </td>
+   <td style="text-align:left;"> <0.001 </td>
    <td style="text-align:left;"> 0.15 </td>
-   <td style="text-align:left;"> 0.0006 </td>
-   <td style="text-align:left;"> &lt; 0.0001 </td>
+   <td style="text-align:left;"> <0.001 </td>
+   <td style="text-align:left;"> &lt; <0.001 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> P value from GEE </td>
-   <td style="text-align:left;"> 0.009 </td>
+   <td style="text-align:left;"> 0.01 </td>
    <td style="text-align:left;"> 0.27 </td>
    <td style="text-align:left;"> 0.35 </td>
    <td style="text-align:left;"> 0.21 </td>
